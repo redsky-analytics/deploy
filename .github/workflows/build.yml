@@ -81,7 +81,7 @@ jobs:
         run: npm publish --tag RC
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
+      - run: npm version ${{ github.event.release.tag_name }}
       - name: Publish @latest to npm
         if: contains(github.ref, 'RC') == false #'!contains()'' doesn't work lol
         run: npm publish
