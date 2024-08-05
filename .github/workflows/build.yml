@@ -79,8 +79,9 @@ jobs:
       # set up git since we will later push to the repo
       - run: git config --global user.name "GitHub CD bot"
       - run: git config --global user.email "github-cd-bot@example.com"
-      - run: npm ci
+      
       - run: npm version ${{ github.event.release.tag_name }}
+      # - run: npm ci
       - name: Publish @latest to npm
         run: npm publish
         env:
