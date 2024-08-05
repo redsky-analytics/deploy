@@ -52,15 +52,6 @@ jobs:
       env:
         CI: true
 
-    - name: Notify
-      uses: sarisia/actions-status-discord@v1
-      # Only fire alert once
-      if: github.ref == 'refs/heads/main' && failure() && matrix.node-version == '20.x' && matrix.os == 'ubuntu-latest'
-      with:
-        webhook: ${{ secrets.DISCORD_WEBHOOK }}
-        title: "build and test"
-        color: 0x222222
-        username: GitHub Actions
 
   # ----- Only git tag testing + package publishing beyond this point ----- #
 
@@ -94,12 +85,3 @@ jobs:
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Notify
-        uses: sarisia/actions-status-discord@v1
-        if: always()
-        with:
-          webhook: ${{ secrets.DISCORD_WEBHOOK }}
-          title: "npm publish"
-          color: 0x222222
-          username: GitHub Actions
