@@ -9,7 +9,7 @@ let _deploy = {}
 let sam = proxyquire('../../../src/sam', {
   '../utils/handler-check': (dirs, update, cb) => cb(),
   './bucket': (params, cb) => cb(null, 'bucket'),
-  '@architect/hydrate': () => ({ install: (params, cb) => cb() }),
+  '@untangler/hydrate': () => ({ install: (params, cb) => cb() }),
   '@architect/utils': {
     toLogicalId: (s) => s,
     updater: () => ({ done: () => {}, status: () => {} }),

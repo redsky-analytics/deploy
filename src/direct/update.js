@@ -1,7 +1,7 @@
 let series = require('run-series')
 let waterfall = require('run-waterfall')
 let zip = require('./zip')
-let hydrate = require('@architect/hydrate')
+let hydrate = require('@untangler/hydrate')
 
 /**
  * zips and uploads the function; overwrites its configuration based on any .arc-config found
