@@ -252,7 +252,7 @@ module.exports = function samDeploy (params, callback) {
     // deploy.end plugins
     function runEndPlugins (callback) {
       let cloudformation = finalCloudFormation
-      plugins.end({ cloudformation, dryRun, inventory, stage }, callback)
+      plugins.end({ cloudformation, dryRun, inventory, stage, arc, stackname }, callback)
     },
   ], callback)
 }
